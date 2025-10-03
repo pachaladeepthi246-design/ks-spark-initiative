@@ -1,0 +1,48 @@
+{
+  "todos": {
+    "Coordinator": {
+      "1": {
+        "id": "1",
+        "content": "Analyze recruitment platform requirements and create project structure",
+        "details": "Define the platform architecture, user flows, and core functionality:\n- Job seeker focused platform\n- General recruitment across all industries\n- Simple, clean interface design\n- Job posting and management system\n- Search and filter capabilities\n- Responsive design for mobile/desktop",
+        "status": "completed",
+        "priority": "high"
+      },
+      "2": {
+        "id": "2",
+        "content": "Build the frontend user interface",
+        "details": "Create a modern, clean recruitment platform frontend:\n- Homepage with hero section and featured jobs\n- Job listings page with advanced search and filters\n- Job detail pages with application forms\n- User authentication (job seekers)\n- Responsive design with mobile-first approach\n- Clean, professional styling",
+        "status": "completed",
+        "priority": "high"
+      },
+      "3": {
+        "id": "3",
+        "content": "Develop backend database and API system",
+        "details": "Implement Supabase backend infrastructure:\n- Job postings database with categories, locations, skills\n- Company profiles and information\n- User authentication and profiles for job seekers\n- Application tracking system\n- Search and filtering APIs\n- Email notifications for applications",
+        "status": "completed",
+        "priority": "high"
+      },
+      "4": {
+        "id": "4",
+        "content": "Implement job management features",
+        "details": "Build comprehensive job management system:\n- Admin panel for posting and managing jobs\n- Job categories and skill tags\n- Location-based job filtering\n- Salary range filtering\n- Job type filters (full-time, part-time, remote)\n- Application deadline management",
+        "status": "completed",
+        "priority": "medium"
+      },
+      "5": {
+        "id": "5",
+        "content": "Add advanced search and filtering capabilities",
+        "details": "Implement robust search functionality:\n- Keyword search across job titles and descriptions\n- Location-based search with geolocation\n- Industry/category filters\n- Experience level filters\n- Salary range filters\n- Company size filters\n- Remote work options",
+        "status": "completed",
+        "priority": "medium"
+      },
+      "6": {
+        "id": "6",
+        "content": "Test and deploy the recruitment platform",
+        "details": "Comprehensive testing and deployment:\n- Functionality testing across all features\n- Mobile responsiveness testing\n- Performance optimization\n- SEO optimization for job listings\n- Deploy to production with live URL\n- Create sample job data for demonstration",
+        "status": "pending",
+        "priority": "high"
+      }
+    }
+  }
+}

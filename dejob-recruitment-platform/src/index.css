@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Dark Web3 Fintech Base Theme */
+  html {
+    background: #0a0a0a; /* Ensure no white flash */
+  }
+  
+  body {
+    font-family: 'Space Mono', 'JetBrains Mono', 'Courier New', monospace;
+    background: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Subtle grid background for that cyber aesthetic */
+    background-image: 
+      linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background: rgba(0, 212, 255, 0.3);
+    color: #ffffff;
+  }
+
+  ::-moz-selection {
+    background: rgba(0, 212, 255, 0.3);
+    color: #ffffff;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #00d4ff, #00ff88);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #33ddff, #33ff99);
+  }
+
+  /* Root font variables for consistent typography */
+  :root {
+    --font-mono: 'Space Mono', 'JetBrains Mono', 'Courier New', monospace;
+    --font-sans: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Headings with Web3 styling */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  /* Input and form styling */
+  input, textarea, select {
+    font-family: 'JetBrains Mono', monospace;
+    background: #1a1a1a;
+    border: 1px solid #262626;
+    color: #ffffff;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: #00d4ff;
+    box-shadow: 0 0 0 1px #00d4ff, 0 0 10px rgba(0, 212, 255, 0.3);
+    outline: none;
+  }
+
+  /* Button base styling */
+  button {
+    font-family: 'Space Mono', monospace;
+    font-weight: 600;
+  }
+
+  /* Link styling */
+  a {
+    color: #00d4ff;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  a:hover {
+    color: #33ddff;
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+  }
+
+  /* Code elements */
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+    background: #111111;
+    border: 1px solid #262626;
+  }
+}
+
+@layer components {
+  /* Web3 Fintech Component Utilities */
+  .cyber-border {
+    border: 1px solid;
+    border-image: linear-gradient(45deg, #00d4ff, #00ff88, #aa00ff) 1;
+  }
+
+  .neon-text {
+    color: #00d4ff;
+    text-shadow: 
+      0 0 5px rgba(0, 212, 255, 0.8),
+      0 0 10px rgba(0, 212, 255, 0.6),
+      0 0 15px rgba(0, 212, 255, 0.4);
+  }
+
+  .cyber-text {
+    color: #00ff88;
+    text-shadow: 
+      0 0 5px rgba(0, 255, 136, 0.8),
+      0 0 10px rgba(0, 255, 136, 0.6);
+  }
+
+  .glass-panel {
+    background: rgba(17, 17, 17, 0.8);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .matrix-bg {
+    background: 
+      linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 136, 0.03) 2px,
+        rgba(0, 255, 136, 0.03) 4px
+      );
+  }
+
+  .gradient-border {
+    position: relative;
+    background: #111111;
+    border-radius: 0.5rem;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    background: linear-gradient(45deg, #00d4ff, #00ff88, #aa00ff);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+  }
+}
+
+@layer utilities {
+  /* Text Utilities */
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  /* Glow Utilities */
+  .glow-hover:hover {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  }
+
+  .border-glow {
+    box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.1);
+  }
+
+  /* Animation Utilities */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Typography Utilities */
+  .font-cyber {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  .text-shadow-neon {
+    text-shadow: 0 0 10px currentColor;
+  }
+}
