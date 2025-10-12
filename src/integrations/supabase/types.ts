@@ -21,7 +21,7 @@ export type Database = {
           message: string
           model: string | null
           response: string
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           created_at?: string | null
@@ -29,7 +29,7 @@ export type Database = {
           message: string
           model?: string | null
           response: string
-          user_id?: string | null
+          user_id: string
         }
         Update: {
           created_at?: string | null
@@ -37,7 +37,7 @@ export type Database = {
           message?: string
           model?: string | null
           response?: string
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: []
       }
@@ -110,6 +110,48 @@ export type Database = {
           payment_method?: string | null
           status?: string | null
           transaction_id?: string | null
+        }
+        Relationships: []
+      }
+      galleries: {
+        Row: {
+          category: string | null
+          created_at: string | null
+          description: string | null
+          display_order: number | null
+          id: string
+          image_url: string
+          is_featured: boolean | null
+          pexels_id: string | null
+          photographer: string | null
+          photographer_url: string | null
+          title: string
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string | null
+          description?: string | null
+          display_order?: number | null
+          id?: string
+          image_url: string
+          is_featured?: boolean | null
+          pexels_id?: string | null
+          photographer?: string | null
+          photographer_url?: string | null
+          title: string
+        }
+        Update: {
+          category?: string | null
+          created_at?: string | null
+          description?: string | null
+          display_order?: number | null
+          id?: string
+          image_url?: string
+          is_featured?: boolean | null
+          pexels_id?: string | null
+          photographer?: string | null
+          photographer_url?: string | null
+          title?: string
         }
         Relationships: []
       }
@@ -382,6 +424,13 @@ export type Database = {
             foreignKeyName: "reviews_student_id_fkey"
             columns: ["student_id"]
             isOneToOne: false
+            referencedRelation: "public_students"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "reviews_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
             referencedRelation: "students"
             referencedColumns: ["id"]
           },
@@ -525,6 +574,71 @@ export type Database = {
         }
         Relationships: []
       }
+      upi_payments: {
+        Row: {
+          amount: number
+          created_at: string | null
+          currency: string | null
+          donation_id: string | null
+          id: string
+          payer_name: string | null
+          payer_vpa: string | null
+          payment_app: string | null
+          payment_timestamp: string | null
+          reference_id: string | null
+          status: string | null
+          transaction_id: string
+          updated_at: string | null
+          upi_id: string
+          verification_signature: string | null
+          verified: boolean | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string | null
+          currency?: string | null
+          donation_id?: string | null
+          id?: string
+          payer_name?: string | null
+          payer_vpa?: string | null
+          payment_app?: string | null
+          payment_timestamp?: string | null
+          reference_id?: string | null
+          status?: string | null
+          transaction_id: string
+          updated_at?: string | null
+          upi_id: string
+          verification_signature?: string | null
+          verified?: boolean | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string | null
+          currency?: string | null
+          donation_id?: string | null
+          id?: string
+          payer_name?: string | null
+          payer_vpa?: string | null
+          payment_app?: string | null
+          payment_timestamp?: string | null
+          reference_id?: string | null
+          status?: string | null
+          transaction_id?: string
+          updated_at?: string | null
+          upi_id?: string
+          verification_signature?: string | null
+          verified?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "upi_payments_donation_id_fkey"
+            columns: ["donation_id"]
+            isOneToOne: false
+            referencedRelation: "donations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string | null
@@ -575,7 +689,57 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      public_students: {
+        Row: {
+          batch: string | null
+          bio: string | null
+          created_at: string | null
+          full_name: string | null
+          github_url: string | null
+          id: string | null
+          joined_at: string | null
+          linkedin_url: string | null
+          photo_url: string | null
+          portfolio_url: string | null
+          skills: string[] | null
+          specialization: string | null
+          status: string | null
+          student_id: string | null
+        }
+        Insert: {
+          batch?: string | null
+          bio?: string | null
+          created_at?: string | null
+          full_name?: string | null
+          github_url?: string | null
+          id?: string | null
+          joined_at?: string | null
+          linkedin_url?: string | null
+          photo_url?: string | null
+          portfolio_url?: string | null
+          skills?: string[] | null
+          specialization?: string | null
+          status?: string | null
+          student_id?: string | null
+        }
+        Update: {
+          batch?: string | null
+          bio?: string | null
+          created_at?: string | null
+          full_name?: string | null
+          github_url?: string | null
+          id?: string | null
+          joined_at?: string | null
+          linkedin_url?: string | null
+          photo_url?: string | null
+          portfolio_url?: string | null
+          skills?: string[] | null
+          specialization?: string | null
+          status?: string | null
+          student_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       has_role: {
