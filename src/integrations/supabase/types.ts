@@ -41,6 +41,36 @@ export type Database = {
         }
         Relationships: []
       }
+      categories: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          icon: string | null
+          id: number
+          name: string
+          slug: string
+          tools_count: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          icon?: string | null
+          id?: number
+          name: string
+          slug: string
+          tools_count?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          icon?: string | null
+          id?: number
+          name?: string
+          slug?: string
+          tools_count?: number | null
+        }
+        Relationships: []
+      }
       contact_messages: {
         Row: {
           created_at: string | null
@@ -305,8 +335,12 @@ export type Database = {
           created_at: string | null
           email: string
           full_name: string
+          github_url: string | null
           id: string
+          linkedin_url: string | null
           phone: string | null
+          portfolio_url: string | null
+          twitter_url: string | null
           updated_at: string | null
         }
         Insert: {
@@ -315,8 +349,12 @@ export type Database = {
           created_at?: string | null
           email: string
           full_name: string
+          github_url?: string | null
           id: string
+          linkedin_url?: string | null
           phone?: string | null
+          portfolio_url?: string | null
+          twitter_url?: string | null
           updated_at?: string | null
         }
         Update: {
@@ -325,8 +363,12 @@ export type Database = {
           created_at?: string | null
           email?: string
           full_name?: string
+          github_url?: string | null
           id?: string
+          linkedin_url?: string | null
           phone?: string | null
+          portfolio_url?: string | null
+          twitter_url?: string | null
           updated_at?: string | null
         }
         Relationships: []
@@ -574,6 +616,35 @@ export type Database = {
         }
         Relationships: []
       }
+      tool_views: {
+        Row: {
+          id: string
+          tool_id: number
+          user_id: string | null
+          viewed_at: string | null
+        }
+        Insert: {
+          id?: string
+          tool_id: number
+          user_id?: string | null
+          viewed_at?: string | null
+        }
+        Update: {
+          id?: string
+          tool_id?: number
+          user_id?: string | null
+          viewed_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tool_views_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       upi_payments: {
         Row: {
           amount: number
@@ -639,6 +710,67 @@ export type Database = {
           },
         ]
       }
+      user_activity: {
+        Row: {
+          activity_data: Json | null
+          activity_type: string
+          created_at: string | null
+          id: string
+          user_id: string | null
+        }
+        Insert: {
+          activity_data?: Json | null
+          activity_type: string
+          created_at?: string | null
+          id?: string
+          user_id?: string | null
+        }
+        Update: {
+          activity_data?: Json | null
+          activity_type?: string
+          created_at?: string | null
+          id?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_activity_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_favorites: {
+        Row: {
+          created_at: string | null
+          id: string
+          tool_id: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          tool_id: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          tool_id?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_favorites_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string | null
@@ -659,6 +791,56 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      user_submissions: {
+        Row: {
+          admin_notes: string | null
+          category: string
+          description: string
+          id: number
+          link: string
+          logo_url: string | null
+          name: string
+          reviewed_at: string | null
+          status: string | null
+          submitted_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          admin_notes?: string | null
+          category: string
+          description: string
+          id?: number
+          link: string
+          logo_url?: string | null
+          name: string
+          reviewed_at?: string | null
+          status?: string | null
+          submitted_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          admin_notes?: string | null
+          category?: string
+          description?: string
+          id?: number
+          link?: string
+          logo_url?: string | null
+          name?: string
+          reviewed_at?: string | null
+          status?: string | null
+          submitted_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_submissions_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       voice_recordings: {
         Row: {
