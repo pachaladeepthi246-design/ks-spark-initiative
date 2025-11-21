@@ -33,7 +33,13 @@ export interface UserProfile {
   id: string
   email?: string
   full_name?: string
+  phone?: string
   avatar_url?: string
+  bio?: string
+  linkedin_url?: string
+  github_url?: string
+  twitter_url?: string
+  portfolio_url?: string
   created_at?: string
   updated_at?: string
 }
